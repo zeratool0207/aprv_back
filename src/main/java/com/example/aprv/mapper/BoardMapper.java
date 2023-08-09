@@ -2,10 +2,13 @@ package com.example.aprv.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface UserMapper {
+public interface BoardMapper {
 
-    Map<String,Object> getLogin(String id);
+    List<Map<String,Object>> getList(String userId);
+
+
 }

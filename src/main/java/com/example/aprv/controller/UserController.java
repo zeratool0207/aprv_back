@@ -1,9 +1,9 @@
 package com.example.aprv.controller;
 
 import com.example.aprv.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -20,12 +21,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/user/login")
-    public Map<String,Object> getLogin() {
-        Map<String, Object> userMap = new HashMap<>();
-        userMap = userService.getLogin();
+    @GetMapping("/login")
+    public Map<String,Object> getLogin(@RequestParam String id, @RequestParam String pass, HttpServletRequest request) {
+        Map<String, Object> resultMap = new HashMap<>();
 
-        return userMap;
+        resultMap = userService.getLogin(id);
+
+        if( resultMap != null && resultMap.get("usr_pass").equals(pass)) {
+            resultMap.put("msg","success");
+            HttpSession session = request.getSession();
+            session.setAttribute("userId", id);
+            session.setMaxInactiveInterval(60 * 30);
+        } else {
+            resultMap.put("msg","fail");
+        }
+
+        return resultMap;
+    }
+
+    @GetMapping("/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
     }
 
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.aprv.mapper.BoardMapper">
+
+    <select id="getList" resultType="map">
+        select
+                    a.brd_id,
+                    a.brd_content,
+                    a.brd_created_by,
+                    a.brd_created_at,
+                    a.brd_status,
+                    a.brd_approved_by,
+                    a.brd_approved_at,
+                    b.usr_position,
+                    c.cod_id,
+                    case when c.cod_id = 'A001' then 'N'
+                         when c.cod_id = 'A002' then 'N'
+                         when c.cod_id = 'A003' then 'Y'
+                         when c.cod_id = 'A004' then 'Y'
+                         when c.cod_id = 'A005' then 'Y'
+                        else 'N' end as repr_yn,
+                    c.cod_name
+            from tbl_aprv_board a,
+                 tbl_aprv_user b,
+                 tbl_aprv_code c
+            where a.brd_created_by = #{ userId }
+              and a.brd_created_by = b.usr_id
+              and b.usr_position = c.cod_id
+    </select>
+
+</mapper>

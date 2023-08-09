@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Map<String, Object> getLogin() {
-        return userMapper.getLogin();
+    public Map<String, Object> getLogin(String id) {
+        return userMapper.getLogin(id);
     }
 }

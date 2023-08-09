@@ -5,18 +5,15 @@
 <mapper namespace="com.example.aprv.mapper.UserMapper">
 
     <select id="getLogin" resultType="map">
-<!--        select-->
-<!--        a.adv_id,-->
-<!--        a.adv_title,-->
-<!--        a.adv_use_yn,-->
-<!--        a.adv_video_id,-->
-<!--        b.vid_id,-->
-<!--        b.vid_file_name,-->
-<!--        b.vid_file_up_path-->
-<!--        from sys.tbl_subway_advertisement a,-->
-<!--        sys.tbl_subway_video b-->
-<!--        where a.adv_video_id = b.vid_id-->
-<!--        and a.adv_use_yn = 'Y'-->
+        select
+                usr_id,
+                usr_pass,
+                usr_email,
+                usr_address,
+                usr_phone,
+                usr_position
+            from tbl_aprv_user
+            where usr_id = #{ id }
     </select>
 
 </mapper>
