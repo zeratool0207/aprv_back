@@ -20,4 +20,9 @@ public class BoardServiceImpl implements BoardService {
     public List<Map<String, Object>> getList(String userId) {
         return boardMapper.getList(userId);
     }
+
+    @Override
+    public List<Map<String, Object>> getCode(String upCode) {
+        return boardMapper.getCode(upCode);
+    }
 }

@@ -31,4 +31,14 @@
               and b.usr_position = c.cod_id
     </select>
 
+    <select id="getCode" resultType="map">
+        select
+                cod_id,
+                cod_name
+            from tbl_aprv_code
+            where cod_up_code_id = #{ upCode }
+    </select>
+
+
+
 </mapper>

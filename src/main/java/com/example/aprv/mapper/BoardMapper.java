@@ -10,5 +10,5 @@ public interface BoardMapper {
 
     List<Map<String,Object>> getList(String userId);
 
-
+    List<Map<String,Object>> getCode(String upCode);
 }

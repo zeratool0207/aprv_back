@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,16 +24,29 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public List<Map<String,Object>> getList(HttpSession session) {
-        List<Map<String,Object>> resultList = new ArrayList<>();
-        String userId = (String) session.getAttribute("userId");
+    public List<Map<String, List<Map<String, Object>>>> getList(HttpSession session) {
+        List<Map<String, List<Map<String, Object>>>> resultList = new ArrayList<>();
 
-        // session에 값이 없을때 어떻게 찍히는지?
-        // null?
+        List<Map<String, Object>> boardList = new ArrayList<>();
+        List<Map<String,Object>> aprvStatusList = new ArrayList<>();
+        List<Map<String,Object>> searchTypeList = new ArrayList<>();
+
+        String userId = (String) session.getAttribute("userId");
+        String upCodeAprvStatus = "B000";
+        String upCodeSearchType = "C000";
 
         if ( userId != null) {
-            resultList = boardService.getList(userId);
-//            resultList = boardService.getList();
+            boardList = boardService.getList(userId);
+            aprvStatusList = boardService.getCode(upCodeAprvStatus);
+            searchTypeList = boardService.getCode(upCodeSearchType);
+
+            Map<String, List<Map<String, Object>>> listWithName = new HashMap<>();
+            listWithName.put("boardList",boardList);
+            listWithName.put("aprvStatusList",aprvStatusList);
+            listWithName.put("searchTypeList",searchTypeList);
+
+            resultList.add(listWithName);
+
         }
 
         return resultList;
