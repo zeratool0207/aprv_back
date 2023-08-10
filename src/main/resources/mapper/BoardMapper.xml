@@ -14,6 +14,7 @@
                     a.brd_approved_by,
                     a.brd_approved_at,
                     b.usr_position,
+                    b.usr_name,
                     c.cod_id,
                     case when c.cod_id = 'A001' then 'N'
                          when c.cod_id = 'A002' then 'N'
