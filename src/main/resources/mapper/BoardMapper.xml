@@ -8,6 +8,7 @@
         select
                     a.brd_id,
                     a.brd_content,
+                    a.brd_title,
                     a.brd_created_by,
                     a.brd_created_at,
                     a.brd_status,
@@ -48,7 +49,5 @@
             from tbl_aprv_code
             where cod_up_code_id = #{ upCode }
     </select>
-
-
 
 </mapper>
