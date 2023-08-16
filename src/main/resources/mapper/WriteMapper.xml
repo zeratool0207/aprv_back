@@ -44,4 +44,12 @@
             where brd_id = #{ brd_id }
     </select>
 
+    <select id="goNextBrdId" resultType="int">
+        select
+                IFNULL(MAX(brd_id),0) + 1 as next_brd_id
+            from tbl_aprv_board
+    </select>
+
+
+
 </mapper>

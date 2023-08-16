@@ -27,4 +27,11 @@ public class WriteServiceImpl implements WriteService {
     public List<Map<String, Object>> getBoardView(String brd_id) {
         return writeMapper.getBoardView(brd_id);
     }
+
+    @Override
+    public int goNextBrdId() {
+        return writeMapper.goNextBrdId();
+    }
+
+
 }

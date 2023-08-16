@@ -9,4 +9,6 @@ public interface WriteService {
 
     List<Map<String,Object>> getBoardView(String brd_id);
 
+    int goNextBrdId();
+
 }

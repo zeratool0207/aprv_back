@@ -12,4 +12,6 @@ public interface WriteMapper {
 
     List<Map<String,Object>> getBoardView(String brd_id);
 
+    int goNextBrdId();
+
 }

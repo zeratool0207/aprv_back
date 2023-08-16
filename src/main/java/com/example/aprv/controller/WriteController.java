@@ -44,4 +44,11 @@ public class WriteController {
         return resultList;
     }
 
+    @GetMapping("/nextBrdId")
+    public int goNextBrdId() {
+        int brdId = writeService.goNextBrdId();
+
+        return brdId;
+    }
+
 }
