@@ -51,4 +51,18 @@ public class WriteController {
         return brdId;
     }
 
+    @PutMapping
+    public void goInsert(@RequestBody Map<String,Object> param, HttpSession session) {
+//        System.out.println(param);
+
+        String userId = (String) session.getAttribute("userId");
+        param.put("userId", userId);
+
+        int boardResult = writeService.goBoardInsert(param);
+
+        System.out.println("boardResult," + boardResult);
+
+    }
+
+
 }

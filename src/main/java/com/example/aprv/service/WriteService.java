@@ -11,4 +11,8 @@ public interface WriteService {
 
     int goNextBrdId();
 
+    int goBoardInsert(Map<String,Object> param);
+
+//    int goHistoryInsert(Map<String,Object> param);
+
 }

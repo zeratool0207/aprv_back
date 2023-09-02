@@ -14,4 +14,8 @@ public interface WriteMapper {
 
     int goNextBrdId();
 
+    int goBoardInsert(Map<String,Object> param);
+
+//    int goHistoryInsert(Map<String,Object> param);
+
 }

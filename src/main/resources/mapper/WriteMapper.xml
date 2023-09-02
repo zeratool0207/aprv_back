@@ -50,6 +50,49 @@
             from tbl_aprv_board
     </select>
 
+    <insert id="goBoardInsert" parameterType="hashMap">
+        insert into tbl_aprv_board
+            (
+                brd_id,
+                brd_content,
+                brd_created_by,
+                brd_status,
+                brd_title,
+                brd_created_at
+            ) values (
+                #{brd_id},
+                #{brd_content},
+                #{userId},
+                #{brd_status},
+                #{brd_title},
+                '2023-03-01'
+            )
+    </insert>
+
+<!--    <insert id="goBoardInsert">-->
+<!--        insert into tbl_aprv_board-->
+<!--        (-->
+<!--            hst_id-->
+<!--            hst_brd_id-->
+<!--            hst_approved_at-->
+<!--            hst_approved_by-->
+<!--            hst_status-->
+<!--        ) values (-->
+<!--            #{param.brd_id},-->
+<!--            #{param.brd_content},-->
+<!--            #{param.brd_id},-->
+<!--            #{param.brd_status},-->
+<!--            #{param.brd_title},-->
+<!--        )-->
+<!--    </insert>-->
+
+
+
+
+<!--    int goBoardInsert();-->
+
+<!--    int goHistoryInsert();-->
+
 
 
 </mapper>
