@@ -12,9 +12,15 @@
                 usr_address,
                 usr_phone,
                 usr_position,
-                usr_name
-            from tbl_aprv_user
-            where usr_id = #{ id }
+                usr_name,
+                (
+                    select
+                            cod_name
+                        from tbl_aprv_code
+                        where cod_id = usr_position
+                ) as usr_position_nm
+        from tbl_aprv_user
+        where usr_id =  #{ id }
     </select>
 
 </mapper>

@@ -30,7 +30,11 @@ public class UserController {
         if( resultMap != null && resultMap.get("usr_pass").equals(pass)) {
             resultMap.put("msg","success");
             HttpSession session = request.getSession();
+
+            System.out.println("this is resultMap" + resultMap);
+
             session.setAttribute("userId", id);
+            session.setAttribute("position", resultMap.get("usr_position"));
             session.setMaxInactiveInterval(60 * 30);
         } else {
             resultMap.put("msg","fail");
