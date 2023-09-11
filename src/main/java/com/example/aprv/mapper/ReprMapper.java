@@ -10,4 +10,9 @@ public interface ReprMapper {
 
     List<Map<String,Object>> getPosition(String position);
 
+    List<Map<String,Object>> getUser(String position);
+
+    List<Map<String,Object>> getBoard();
+
+
 }

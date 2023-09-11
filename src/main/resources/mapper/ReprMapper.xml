@@ -29,4 +29,23 @@
             </choose>
     </select>
 
+    <select id="getUser" resultType="map">
+        select
+                usr_id,
+                usr_position,
+                usr_name
+            from tbl_aprv_user
+            where usr_position = #{position}
+    </select>
+
+    <select id="getBoard" resultType="map">
+        select
+                brd_id,
+                brd_title,
+                brd_status
+        from tbl_aprv_board
+    </select>
+
+
+
 </mapper>

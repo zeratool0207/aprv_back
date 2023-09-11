@@ -69,29 +69,24 @@
             )
     </insert>
 
-<!--    <insert id="goBoardInsert">-->
-<!--        insert into tbl_aprv_board-->
-<!--        (-->
-<!--            hst_id-->
-<!--            hst_brd_id-->
-<!--            hst_approved_at-->
-<!--            hst_approved_by-->
-<!--            hst_status-->
-<!--        ) values (-->
-<!--            #{param.brd_id},-->
-<!--            #{param.brd_content},-->
-<!--            #{param.brd_id},-->
-<!--            #{param.brd_status},-->
-<!--            #{param.brd_title},-->
-<!--        )-->
-<!--    </insert>-->
-
-
-
-
-<!--    int goBoardInsert();-->
-
-<!--    int goHistoryInsert();-->
+    <insert id="goHistoryInsert">
+        insert into tbl_aprv_history
+            (
+                hst_id,
+                hst_brd_id,
+                hst_approved_at,
+                hst_status
+            ) values (
+                (
+                    select
+                            IFNULL(MAX(hst_id),0) + 1
+                        from tbl_aprv_history as history_subquery
+                ),
+                #{brd_id},
+                NOW(),
+                'B001'
+            )
+    </insert>
 
 
 

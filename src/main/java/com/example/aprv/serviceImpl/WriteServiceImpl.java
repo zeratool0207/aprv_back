@@ -39,6 +39,11 @@ public class WriteServiceImpl implements WriteService {
         return writeMapper.goBoardInsert(param);
     }
 
+    @Override
+    public int goHistoryInsert(String brd_id) {
+        return writeMapper.goHistoryInsert(brd_id);
+    }
+
 //    @Override
 //    public int goHistoryInsert(Map<String,Object> param) {
 //        return writeMapper.goHistoryInsert(param);

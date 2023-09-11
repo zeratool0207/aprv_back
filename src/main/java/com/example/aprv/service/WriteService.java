@@ -13,6 +13,6 @@ public interface WriteService {
 
     int goBoardInsert(Map<String,Object> param);
 
-//    int goHistoryInsert(Map<String,Object> param);
+    int goHistoryInsert(String brd_id);
 
 }

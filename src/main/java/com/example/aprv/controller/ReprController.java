@@ -3,10 +3,7 @@ package com.example.aprv.controller;
 import com.example.aprv.service.BoardService;
 import com.example.aprv.service.ReprService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,8 +21,8 @@ public class ReprController {
         this.reprService = reprService;
     }
 
-    @GetMapping("list")
-    public List<Map<String,Object>> getLis(HttpSession session) {
+    @GetMapping("/list")
+    public List<Map<String,Object>> getList(HttpSession session) {
 
         List<Map<String,Object>> positionList = new ArrayList<>();
 
@@ -37,6 +34,27 @@ public class ReprController {
 
         return positionList;
 
+    }
+
+    @GetMapping("/user")
+    public List<Map<String,Object>> getUserList(HttpSession httpSession, @RequestParam String position) {
+
+        List<Map<String,Object>> userList = new ArrayList<>();
+
+       if (position != null) {
+           userList = reprService.getUser(position);
+       }
+
+       return userList;
+    }
+
+    @GetMapping("/board")
+    public List<Map<String,Object>> getBoardList(HttpSession httpSession) {
+
+        List<Map<String,Object>> boardList = new ArrayList<>();
+        boardList = reprService.getBoard();
+
+        return boardList;
     }
 
 

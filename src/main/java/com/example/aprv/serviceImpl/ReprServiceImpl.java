@@ -20,4 +20,14 @@ public class ReprServiceImpl implements ReprService {
     public List<Map<String, Object>> getPosition(String position) {
         return reprMapper.getPosition(position);
     }
+
+    @Override
+    public List<Map<String, Object>> getUser(String position) {
+        return reprMapper.getUser(position);
+    }
+
+    @Override
+    public List<Map<String, Object>> getBoard() {
+        return reprMapper.getBoard();
+    }
 }

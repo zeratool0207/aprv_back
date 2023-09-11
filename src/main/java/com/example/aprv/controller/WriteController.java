@@ -53,14 +53,21 @@ public class WriteController {
 
     @PutMapping
     public void goInsert(@RequestBody Map<String,Object> param, HttpSession session) {
-//        System.out.println(param);
+        Map<String,Object> brdParamMap = new HashMap<>();
+        Map<String,Object> hstParamMap = new HashMap<>();
 
         String userId = (String) session.getAttribute("userId");
-        param.put("userId", userId);
+        brdParamMap = (Map)param.get("param");
+        brdParamMap.put("userId", userId);
+        int boardResult = writeService.goBoardInsert(brdParamMap);
 
-        int boardResult = writeService.goBoardInsert(param);
+        String brd_id = brdParamMap.get("brd_id").toString();
+//        hstParamMap.put("brd_id", brd_id);
+//        hstParamMap.put("userId", userId);
 
-        System.out.println("boardResult," + boardResult);
+
+
+        int historyResult = writeService.goHistoryInsert(brd_id);
 
     }
 
